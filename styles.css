@@ -171,54 +171,6 @@ footer a:hover {
   color: #00e6e6;
 }
 
-.typing-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-#typing-text {
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  transform: translateY(-50%);
-  color: #888;
-  font-size: 1rem;
-  pointer-events: none;
-  font-family: inherit;
-}
-
-.cursor {
-  animation: blink 1s step-start infinite;
-  color: #00e6e6;
-  font-weight: bold;
-  margin-left: 2px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-#chat-input {
-  width: 100%;
-  padding: 1rem;
-  padding-left: 1rem;
-  border: none;
-  border-radius: 10px;
-  background: #2e2e2e;
-  color: #fff;
-  font-size: 1rem;
-  position: relative;
-  z-index: 1;
-}
-
-#chat-input:focus + #typing-text,
-#chat-input:focus + .cursor {
-  display: none;
-}
-
 
 /* === Mobile Navigation Styles === */
 .menu-toggle {
@@ -259,4 +211,53 @@ footer a:hover {
   .nav-links.active {
     display: flex;
   }
+}
+
+
+/* ########################### */
+
+.typing-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.typing-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 1rem;
+  font-family: inherit;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.cursor {
+  animation: blink 1s step-start infinite;
+  color: #00e6e6;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+#chat-input {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: #2e2e2e;
+  color: #fff;
+  font-size: 1rem;
+  z-index: 1;
+  position: relative;
+}
+
+/* Hide the typing text when user focuses */
+#chat-input:focus + .typing-placeholder {
+  display: none;
 }
